@@ -1,6 +1,6 @@
-baseURL = "https://sanjay-saxena.io/"
+baseURL = "https://sanjay-saxena.github.io/"
 languageCode = "en-us"
-title = "sanjay-saxena.io"
+title = "sanjay-saxena.github.io"
 theme = "hyde"
 copyright = "Sanjay Saxena"
 
