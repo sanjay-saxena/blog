@@ -9,7 +9,7 @@ Sanjay Saxena is currently serving as a Developer Advocate for IBM, promoting IB
 Platform-As-A-Service(PaaS), Bluemix. He has more than two decades of experience as
 a system developer on declarative and metadata-driven application development 
 frameworks for building MVC-style web and mobile applications. He has also worked on
-real-time communications and implemented (WebSocket)[https://tools.ietf.org/html/rfc6455]
+real-time communications and implemented [WebSocket](https://tools.ietf.org/html/rfc6455)
 client libraries for Java, C#, Objective-C, and Javascript. He has a deep understanding of
 high-level messaging protocols that can be used for pub/sub and point-to-point models.
 He is an experienced architect and team leader specializing in object oriented principles,
