@@ -19,6 +19,8 @@ copyright = "Sanjay Saxena"
 [params]
 	description = "by Sanjay Saxena"
 	github = "https://github.com/sanjay-saxena"
+	linkedin = "https://www.linkedin.com/in/sanjay-saxena-77a107/"
+	stackoverflow = "http://stackoverflow.com/users/6378624/sanjay-saxena"
 	disqus = "sanjay-saxena-github-io"
     disqusShortname = "sanjay-saxena-github-io"
     themeColor = "theme-base-0d"
