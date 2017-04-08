@@ -163,7 +163,7 @@ Here are the steps to merge `hello-world.md` to `https://github.com/<username>/<
 
 ```
 $ cd ~/Workdir/<username>-hugo
-$ git add blog/hello-world.md
+$ git add .
 $ git commit -m "Added hello-world.md"
 $ git push -u origin master
 ```
