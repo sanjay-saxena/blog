@@ -5,9 +5,168 @@ title = "First Blog with Hugo"
 draft = false
 
 +++
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+When I was asked to create a blog site, I started researching the popular blogging platforms. However, I was getting overwhelmed while trying to understand the pros/cons of paid vs free platforms and the strategies of hosted vs self-hosted and the issues with each of them. That is when I came across [Hugo](http://hugo.spf13.com/) in a comment section of one of the blogs that I was reading. And, according to the comment, the only thing that was needed to create a site using [Hugo](http://hugo.spf13.com/) is a [Github](https://github.com) account. 
+
+Since I already have a [Github](https://github.com) account, it appealed to the developer in me and I decided to investigate [Hugo](http://hugo.spf13.com/). As part of my investigation, when I learnt that [Hugo](http://hugo.spf13.com/) is not only free but the generated site is also fast(because of static assets) and served directly off of [Github](https://github.com) using https://<username>.github.io URL, I was sold! But, when I learnt that [Hugo](http://hugo.spf13.com/) allows content to be created using [Markdown](http://github.github.com/github-flavored-markdown/), I was blown away!
+
+Having decided to create a static HTML site running on [Github](https://github.com) using [Hugo](http://hugo.spf13.com/), I wasn't sure how successful my efforts would be as I didn't know [Golang](https://golang.org/) and the thought of handcrafting HTML pages and CSS style classes wasn't too appealing. Then, I stumbled upon [Nate Finch](https://github.com/natefinch)'s excellent posts at [nfp.io](https://nfp.io) to make me a true believer in [Hugo](http://hugo.spf13.com/). Using the layouts and the theme templates from Nate's Github [repo](https://github.com/natefinch/npf) as the starting point, I was able to personalize them to create the code for my static HTML site. Though I have a long ways to go to automate things using Wercker for CI and other hooks, I think I am in much better shape as I got the basic stuff working.
+
+This blog includes steps that one can take create a static HTML site running on [Github](https://github.com) using [Hugo](http://hugo.spf13.com/). To be able to create a static HTML site on [Github](https://github.com), you must sign-up/register with [Github](https://github.com) and get a username.
+
+## Install Hugo
+
+Based on your operating system, you can follow these [instructions](https://gohugo.io/overview/installing/) to install [Hugo](http://hugo.spf13.com/) on your machine.
+
+## Create Github Repositories
+
+Sign into [Github](https://github.com) and create the following two public repositories and select the checkbox to initialize the repository with a README:
+
+  * <username>-hugo: This repository will contain the source code for your site such as templates, etc.
+  * <username>.github.io: Name of this repository must follow the convention. This repo will contain the actual artifacts such as HTML, CSS, etc. that will be served up when it is accessed using https://<username>.github.io URL.
+
+
+## Working Environment
+
+Once the repositories are created, here are the steps for creating a working environment that would allow you to create content:
+
+### Create Hugo Site
+
+```
+$ cd ~; mkdir Workdir; cd Workdir
+$ hugo new site <username>-hugo
+```
+
+### Sync with the Git repo
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ git init
+$ git remote add origin https://github.com/<username>/<username>-hugo
+$ git branch --set-upstream-to=origin/master master
+$ git pull origin master
+```
+
+### Create symbolic link
+
+To generate the static HTML content, you will have to execute `hugo` command from `<username>-hugo` folder. By default, the static artifacts are generated in sub-folder named `public`. These artifacts will have to merged/pushed to the `<username>.github.io` repository. To make this a bit easier, we can create a symbolic link as shown below:
+
+```
+$ cd ~/Workdir
+$ git clone https://github.com/<username>/<username>.github.io.git
+$ cd <username>-hugo
+$ ln -s ../<username>.github.io public
+$ echo public > .gitignore
+```
+
+### Copy Nate's Templates
+
+To get started, you can copy Nate's templates as shown below:
+
+```
+$ cd /tmp
+$ git clone https://github.com/natefinch/npf
+$ cp -r /tmp/nfp/archetypes ~/Workdir/<username>-hugo/
+$ cp -r /tmp/nfp/layouts ~/Workdir/<username>-hugo/
+$ cp -r /tmp/nfp/themes ~/Workdir/<username>-hugo/
+$ cp -r /tmp/nfp/static ~/Workdir/<username>-hugo/
+```
+
+### Update config.toml
+
+You can update the minimal `~/Workdir/<username>-hugo/config.toml` that Hugo generated. For inspiration, you can look at Nate's `/tmp/npf/config.toml`.
+
+### Personalize Templates
+
+You should also personalize `~/Workdir/<username>-hugo/themes/hyde/layouts/chrome/sidebar.html` with your details.
+
+### Merge Changes
+
+Once the scaffolding is created, you can merge them to repository as shown below:
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ git add .
+$ git commit -m "Initial commit"
+$ git push -u origin master
+```
+
+## Add hello-world blog entry
+
+Now that you environment is all set, you can add the first blog entry using the following command:
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ hugo new blog/hello-world.md
+$ cd content/blog
+```
+
+Edit `hello-world.md` by changing `draft = true` to `draft = false`. Also, update the `title` by making it more user friendly as shown below:
+
+```
++++
+type = "post"
+date = "2017-04-07T19:32:12-07:00"
+title = "Hello World using Hugo"
+draft = false
++++
+
+Hello World using Hugo
+======================
+
+My first flog with Hugo!
+
+```
+
+## Preview Content
+
+Using Hugo's inbuilt server, you can preview the content using the following command:
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ hugo server --buildDrafts
+```
+
+Then, you can point your browser to `http://localhost:1313` to preview the content. You can click on the `Posts` link in the side-nav to look at the list view of your posts.
+
+## Generate Content
+
+Once satisfied, the content can be generated using the following commands:
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ hugo
+
+```
+
+This will result in the static HTML artifacts to be generated in the `public` sub-folder that is a symbolic-link to `../<username>.github.io` folder.
+
+## Merge Changes
+
+Note that the `hello-world.md` will be merged/pushed to `<username>-hugo` repository and the generated content will be merged/pushed to `<username>.github.io` repository.
+
+Here are the steps to merge `hello-world.md` to `<username>-hugo` repository:
+
+```
+$ cd ~/Workdir/<username>-hugo
+$ git add blog/hello-world.md
+$ git commit -m "Added hello-world.md"
+$ git push -u origin master
+
+```
+
+Here are the steps to merge generated artifacts to `<username>.github.io` repository:
+
+```
+$ cd ~/Workdir/<username>-hugo/public
+$ git add .   // only needed to be done the first time
+$ git commit -am "First checkin with Hello World blog"
+$ git push -u origin master
+
+```
+
+Load `https://<username>.github.io` in your browser and checkout your shiny little site!
+
+From this point on, whenever you need to add a new post, it's just lather, rinse, and repeat the aforementioned steps outlined for adding hello world blog!
+
+
+
