@@ -102,7 +102,7 @@ $ hugo new blog/hello-world.md
 $ cd content/blog
 ```
 
-Edit `hello-world.md` by changing `draft = true` to `draft = false`. Also, update the `title` by making it more user friendly as shown below:
+Edit `hello-world.md` by changing `draft = true` to `draft = false`. Also, update the `title` by making it more user friendly and use markdown syntax to add a title and text as shown below:
 
 ```
 +++
