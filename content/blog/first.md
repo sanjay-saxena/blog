@@ -157,7 +157,7 @@ Here are the steps to merge generated artifacts to `https://github.com/<username
 
 ```
 $ cd ~/Workdir/<username>-hugo/public
-$ git add .   // only needed to be done the first time
+$ git add .   // only first time after that use "git status" to add new folders
 $ git commit -am "First checkin with Hello World blog"
 $ git push -u origin master
 ```
