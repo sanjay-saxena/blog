@@ -81,7 +81,7 @@ You should also personalize `~/Workdir/<username>-hugo/themes/hyde/layouts/chrom
 
 ### Merge Changes
 
-Once the scaffolding is created, you can merge it to repository as shown below:
+Once the scaffolding is created, you can push it to `https://github.com/<username>/<username>-hugo` repository as shown below:
 
 ```
 $ cd ~/Workdir/<username>-hugo
@@ -90,7 +90,7 @@ $ git commit -m "Initial commit"
 $ git push -u origin master
 ```
 
-At this point, your environemnt is ready and you can create content.
+At this point, your environment is ready and you can create content.
 
 ## Add Hello World Blog
 
@@ -116,7 +116,6 @@ Hello World using Hugo
 ======================
 
 My first flog with Hugo!
-
 ```
 
 ## Preview Content
@@ -137,14 +136,13 @@ Once satisfied, the content can be generated using the following commands:
 ```
 $ cd ~/Workdir/<username>-hugo
 $ hugo
-
 ```
 
 This will result in the static HTML artifacts to be generated in the `public` sub-folder that is a symbolic-link to `../<username>.github.io` folder.
 
 ## Merge Changes
 
-Note that the `hello-world.md` will be merged/pushed to `https://github.com/<username>/<username>-hugo` repository and the generated content will be merged/pushed to `https://github.com/<username>/<username>.github.io` repository.
+Note that the `hello-world.md` will be merged/pushed to `https://github.com/<username>/<username>-hugo` repository and the generated content in the `public` sub-folder will be merged/pushed to `https://github.com/<username>/<username>.github.io` repository.
 
 Here are the steps to merge `hello-world.md` to `https://github.com/<username>/<username>-hugo` repository:
 
@@ -153,7 +151,6 @@ $ cd ~/Workdir/<username>-hugo
 $ git add blog/hello-world.md
 $ git commit -m "Added hello-world.md"
 $ git push -u origin master
-
 ```
 
 Here are the steps to merge generated artifacts to `https://github.com/<username>/<username>.github.io` repository:
@@ -163,12 +160,11 @@ $ cd ~/Workdir/<username>-hugo/public
 $ git add .   // only needed to be done the first time
 $ git commit -am "First checkin with Hello World blog"
 $ git push -u origin master
-
 ```
 
 Load `https://<username>.github.io` in your browser and checkout your shiny little site!
 
-From this point on, whenever you need to add a new post, it's just lather, rinse, and repeat the aforementioned steps outlined for adding hello world blog!
+From this point on, whenever you need to add a new post, it's just lather, rinse, and repeat the aforementioned steps outlined for adding the Hello World blog!
 
 
 
