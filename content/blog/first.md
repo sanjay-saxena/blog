@@ -11,7 +11,7 @@ Since I already have a [Github](https://github.com) account, it appealed to the 
 
 Having decided to create a static HTML site running on [Github](https://github.com) using [Hugo](http://hugo.spf13.com/), I wasn't sure how successful my efforts would be as I didn't know [Golang](https://golang.org/) and the thought of handcrafting HTML pages and CSS style classes wasn't too appealing. Then, I stumbled upon [Nate Finch](https://github.com/natefinch)'s excellent posts at [nfp.io](https://nfp.io) to make me a true believer in [Hugo](http://hugo.spf13.com/). Using the layouts and the theme templates from Nate's Github [repo](https://github.com/natefinch/npf) as the starting point, I was able to personalize them to create the code for my static HTML site. Though I have a long ways to go to automate things using Wercker for CI and other hooks, I think I am in much better shape as I got the basic stuff working.
 
-This blog includes steps that one can take create a static HTML site running on [Github](https://github.com) using [Hugo](http://hugo.spf13.com/). To be able to create a static HTML site on [Github](https://github.com), you must sign-up/register with [Github](https://github.com) and get a username. In the remainder of this post, treat `<username>` as a placeholder for your [Github](https://github.com) username.
+This blog includes steps that one can take to create a static HTML site running on [Github](https://github.com) using [Hugo](http://hugo.spf13.com/). To be able to create a static HTML site on [Github](https://github.com), you must sign-up/register with [Github](https://github.com) and get a username. In the remainder of this post, treat `<username>` as a placeholder for your [Github](https://github.com) username.
 
 ## Install Hugo
 
@@ -85,14 +85,15 @@ You can update the minimal `~/Workdir/<username>-hugo/config.toml` that Hugo gen
   * `copyright`
   * URLs to social media sites using your own details
 
-### Personalize Templates
+### Update Other Files
 
-Here are some of the files that you need to update with your details:
+Here are some of the other files that you need to update:
 
   * `~/Workdir/<username>-hugo/README.md`: Update the links and the repository names.
   * `~/Workdir/<username>-hugo/static/README.md`: This README.md will get copied to the `public` folder when the site is generated and will end up in the content root of your generated site. Update the links using your site specific details.
   * `~/Workdir/<username>-hugo/static/CNAME`: If you have a vanity domain name registered with a DNS provider, update this file with your domain name. This file also gets copied to the `public` folder when the site is generated and will end up in the content root of your generated site. If you do not have a domain name registered and are planning on using `https://<username>.github.io` to server your content, then you should delete this file.
   * `~/Workdir/<username>-hugo/themes/hyde/layouts/chrome/sidebar.html`: Update the links for social networking sites with your information. Also, update the copyright and other boilerplate information.
+  * `~/Workdir/<username-hugo>/themes/hyde/layouts/chrome/head.html`: Replace reference to the obsoleted API `RSSlink` with `RSSLink` to avoid seeing an error while building the static site.
 
 ### Merge Changes
 
