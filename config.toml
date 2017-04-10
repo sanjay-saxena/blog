@@ -5,23 +5,24 @@ theme = "hyde"
 copyright = "Sanjay Saxena"
 
 [Author]
-	name = "Sanjay Saxena"
+    name = "Sanjay Saxena"
 
 [Permalinks]
-	blog = "/:year/:month/:filename/"
-	code = "/:filename/"
+    blog = "/:year/:month/:filename/"
+    code = "/:filename/"
 
 [Taxonomies]
-	tag = "tags"
-	series = "series"
-	series-desc = "series-desc"
+    tag = "tags"
+    series = "series"
+    series-desc = "series-desc"
 
 [params]
-	description = "by Sanjay Saxena"
-	github = "https://github.com/sanjay-saxena"
-	linkedin = "https://www.linkedin.com/in/sanjay-saxena-77a107/"
-	stackoverflow = "http://stackoverflow.com/users/6378624/sanjay-saxena"
-	disqus = "sanjay-saxena-github-io"
+    description = "by Sanjay Saxena"
+    github = "https://github.com/sanjay-saxena"
+    linkedin = "https://www.linkedin.com/in/sanjay-saxena-77a107/"
+    stackoverflow = "http://stackoverflow.com/users/6378624/sanjay-saxena"
+    rss = true
+    disqus = "sanjay-saxena-github-io"
     disqusShortname = "sanjay-saxena-github-io"
     themeColor = "theme-base-0d"
 
